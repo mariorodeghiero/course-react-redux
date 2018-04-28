@@ -1,30 +1,32 @@
 import React, { Component } from "react";
 import "./App.css";
+import Clock from "./Clock";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deadLine: "December 25, 2018."
+      deadLine: "December 25, 2018.",
+      newDeadLine: ""
     };
   }
 
   changeDeadLine() {
-    this.setState({ deadLine: "November 14, 2018" });
+    this.setState({ deadLine: this.state.newDeadLine });
   }
 
   render() {
     return (
       <div className="App">
         <div className="App-title">Countdown to {this.state.deadLine}</div>
+        <Clock />
         <div>
-          <div className="Clock-days">12 days</div>
-          <div className="Clock-hours">12 hours</div>
-          <div className="Clock-minutes">12 minutes</div>
-          <div className="Clock-seconds">12 seconds</div>
-        </div>
-        <div>
-          <input placeholder="enter your date..." />
+          <input
+            placeholder="enter your date..."
+            onChange={event =>
+              this.setState({ newDeadLine: event.target.value })
+            }
+          />
           <button onClick={() => this.changeDeadLine()}>Submit</button>
         </div>
       </div>
