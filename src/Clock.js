@@ -11,7 +11,26 @@ class Clock extends Component {
       seconds: 0
     };
   }
+
+  getTimeUntil(deadLine) {
+    const time = Date.parse(deadLine) - Date.parse(new Date());
+    const seconds = Math.floor((time / 1000) % 60);
+    const minutes = Math.floor((time / 1000 / 60) % 60);
+    const hours = Math.floor((time / (1000 * 60 * 60)) % 60);
+    const days = Math.floor((time / (1000 * 60 * 60 * 24)) % 60);
+    console.log(
+      "Seconds:",
+      seconds,
+      "minutes:",
+      minutes,
+      "hours:",
+      hours,
+      "days:",
+      days
+    );
+  }
   render() {
+    this.getTimeUntil(this.props.deadLine);
     return (
       <div>
         <div className="Clock-days">{this.state.days} days</div>

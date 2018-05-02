@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-title">Countdown to {this.state.deadLine}</div>
-        <Clock />
+        <Clock deadLine={this.state.deadLine} />
         <div>
           <input
             placeholder="enter your date..."
