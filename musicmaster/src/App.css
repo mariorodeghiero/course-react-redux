@@ -1,0 +1,13 @@
+body {
+  background: rgba(68, 111, 146, 0.932);
+  color: #fff;
+}
+
+.App {
+  text-align: center;
+  margin: 5%;
+}
+
+.App-tittle {
+  font-size: 26px;
+}
