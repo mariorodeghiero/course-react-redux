@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { FormGroup, FormControl, InputGroup, Glyphicon } from "react-bootstrap";
 import "./App.css";
+import { accessToken } from "./token";
 
 class App extends Component {
   constructor(props) {
@@ -12,6 +13,22 @@ class App extends Component {
 
   search() {
     console.log("Target:", this.state);
+    const url = `https://api.spotify.com/v1/search?q=${
+      this.state.query
+    }&type=artist&limit=1`;
+
+    let myOptions = {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + accessToken
+      },
+      mode: "cors",
+      cache: "default"
+    };
+
+    fetch(url, myOptions)
+      .then(response => response.json())
+      .then(data => console.log(data.artists.items[0].genres));
   }
 
   render() {

@@ -1,0 +1,4 @@
+let accessToken =
+  "BQClMDj6SLa90zW3IMfgU3h2OKCOADGDN_ebS5BGJZqAPQG2m12ahp3ZSUmsjGCVXS9p3zFkuCCwehQuDvbItpqk50ZmVbMiNXH870LIq2Sedc7GxhcIoGp-TbMB7kO9XsLnQIPCjYCmcBnDu_p6yM5_iiQXkpK1U-Y&refresh_token=AQAdP7p56yzD3gczvQdfhVweVyW3m4GnFKstVeAuKM9N11eE9so559ye1LuK6qoOMRe2TjHBF9p6Nb_d-18k7lp8wB0MIhgaKA9cTvinr94gS81CRUqWMynlgQCg2ZufmHw";
+
+export { accessToken };
