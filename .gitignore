@@ -3,7 +3,7 @@
 # dependencies
 deadline-day/node_modules
 musicmaster/node_modules
-src/token
+musicmaster/src/token
 
 # testing
 /coverage
