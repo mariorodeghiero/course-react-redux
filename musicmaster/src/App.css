@@ -11,3 +11,25 @@ body {
 .App-tittle {
   font-size: 26px;
 }
+
+.profile {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #fff;
+  border-radius: 75px;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: 26px;
+}
+
+.profile-followers,
+.profile-genrer {
+  font-size: 18px;
+}
