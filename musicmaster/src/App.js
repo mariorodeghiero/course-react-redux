@@ -28,7 +28,7 @@ class App extends Component {
 
     fetch(url, myOptions)
       .then(response => response.json())
-      .then(data => console.log(data.artists.items[0].genres));
+      .then(data => console.log(data.artists.items[0]));
   }
 
   render() {
