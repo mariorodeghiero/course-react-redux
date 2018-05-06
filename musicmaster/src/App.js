@@ -15,9 +15,10 @@ class App extends Component {
 
   search() {
     console.log("Target:", this.state);
-    const url = `https://api.spotify.com/v1/search?q=${
+    let url = `https://api.spotify.com/v1/search?q=${
       this.state.query
     }&type=artist&limit=1`;
+    let albumUrl = 'https://api.spotify.com/v1/artists/';
 
     let myOptions = {
       method: "GET",
@@ -35,6 +36,10 @@ class App extends Component {
         this.setState({
           artist
         });
+        url = `${albumUrl}${artist.id}/top-tracks?country=BR`;
+        fetch(url, myOptions)
+          .then(response => response.json())
+          .then(data => console.log(data))
       });
   }
 
