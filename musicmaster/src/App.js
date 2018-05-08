@@ -3,13 +3,15 @@ import { FormGroup, FormControl, InputGroup, Glyphicon} from "react-bootstrap";
 import "./App.css";
 import {accessToken} from "./token";
 import Profile from "./Profile";
+import Gallery from './Gallery'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       query: "",
-      artist: null
+      artist: null,
+      tracks: []
     };
   }
 
@@ -39,52 +41,54 @@ class App extends Component {
         url = `${albumUrl}${artist.id}/top-tracks?country=BR`;
         fetch(url, myOptions)
           .then(response => response.json())
-          .then(data => console.log(data))
+          .then(data => {
+            const {tracks, albums, artist} = data;
+            this.setState({tracks});
+            console.log(data)
+          })
       });
   }
 
   render() {
-    return ( 
-    <div className = "App" >
-      <div className = "App-tittle" > Music master </div> 
-        <FormGroup >
-          <InputGroup >
-            <FormControl type = "text"
-              placeholder = "Enter your artist"
-              value = {
-                this.props.query
-              }
-              onChange = {
-                event => {
-                  this.setState({
-                    query: event.target.value
-                  });
+    return (
+      <div className = "App" >
+        <div className = "App-tittle" > Music master </div> 
+          <FormGroup >
+            <InputGroup >
+              <FormControl type = "text"
+                placeholder = "Enter your artist"
+                value = {
+                  this.props.query
                 }
-              }
-              onKeyPress = {
-                event => {
-                  if (event.key === "Enter") {
-                    this.search();
+                onChange = {
+                  event => {
+                    this.setState({
+                      query: event.target.value
+                    });
                   }
                 }
-              }
-            /> 
-            <InputGroup.Addon onClick = {
-              () => this.search()}>
-              <Glyphicon glyph = "search" / >
-            </InputGroup.Addon> 
-          </InputGroup> 
-        </FormGroup> 
-        {
-          this.state.artist !== null ? 
-          <div>
-              <Profile artist = {this.state.artist}/> 
-                <div className = "Gallery" >
-                   <div> gallery </div> 
-                </div> 
-          </div>
-          : <div></div>
-        }
+                onKeyPress = {
+                  event => {
+                    if (event.key === "Enter") {
+                      this.search();
+                    }
+                  }
+                }
+              />
+              <InputGroup.Addon onClick = {
+                () => this.search()}>
+                <Glyphicon glyph = "search" / >
+              </InputGroup.Addon> 
+            </InputGroup> 
+          </FormGroup> 
+          {
+            this.state.artist !== null ? 
+            <div>
+                <Profile artist = {this.state.artist}/>
+                  <Gallery tracks={this.state.tracks}></Gallery>
+            </div>
+            : <div></div>
+          }
       </div>
     );
   }
