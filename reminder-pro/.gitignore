@@ -1,9 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-deadline-day/node_modules
-musicmaster/node_modules
-reminder-pro/node_modules
+/node_modules
 
 # testing
 /coverage
